@@ -62,7 +62,7 @@ export const CreateForm = ({ submit,categeoryData, categeoryId,name,price,img })
             type={"submit"}
             children={"Add Product"}
             variant="success"
-            className={"w-1/2 font-bold py-3 mx-auto mt-5"}
+            className="w-1/2 font-bold py-3 mx-auto mt-5"
           />
         </form>
       </div>

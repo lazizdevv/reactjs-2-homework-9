@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
-import { ProductCard } from "../../components/product-card/product-card";
+import { ProductCard } from "../../components/product-card";
 import { useGetData } from "../../service/query/useGetData";
 import { Button } from "../../ui/button";
 

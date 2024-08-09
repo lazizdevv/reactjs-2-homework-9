@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "../../ui/button";
 import { useNavigate } from "react-router-dom";
 import { useDeleteProduct } from "../../service/mutation/useDeleteProduct";
+import { toast } from "react-toastify";
 
 export const ProductCard = ({ id, name, img, price, categoryId }) => {
   const navigate = useNavigate();
@@ -11,13 +12,14 @@ export const ProductCard = ({ id, name, img, price, categoryId }) => {
     mutate(id, {
       onSuccess: () => {
         console.log("product deleted!");
+        toast.success("product muvaffaqiyatli o'chirildi!");
       },
     });
   };
   return (
     <>
-      <div className="flex items-center justify-between p-6 shadow-lg rounded-lg border-2 relative">
-        <div className="flex gap-5">
+      <div className="flex items-center justify-center lg:justify-between p-6 shadow-lg rounded-lg border-2 relative">
+        <div className="flex flex-col lg:flex-row gap-5">
           <img
             className="w-[250px] h-fit border-2 border-dashed"
             src={img}
@@ -25,7 +27,7 @@ export const ProductCard = ({ id, name, img, price, categoryId }) => {
           />
           <div className="">
             <h2>{name}</h2>
-            <strong>{price}</strong>
+            <strong>${price}</strong>
           </div>
         </div>
         <div className="flex items-center gap-5 absolute right-5 bottom-5">
