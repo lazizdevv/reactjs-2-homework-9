@@ -11,6 +11,8 @@ export const Login = () => {
   const submit = (data) => {
     mutate(data, {
       onSuccess: (res) => {
+        console.log(data);
+        
         if (res && res.user && res.accessToken) {
           console.log(data);
           toast.success("Login Muvaffaqiyatli Bajarildi!");
