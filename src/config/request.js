@@ -1,7 +1,7 @@
 import axios from "axios";
 import { loadState } from "./storage";
 
-const request = axios.create({ baseURL: "http://localhost:3000" });
+const request = axios.create({ baseURL: "https://admin-panel-api-rose.vercel.app" });
 
 request.interceptors.request.use((config) => {
   config.headers = {
