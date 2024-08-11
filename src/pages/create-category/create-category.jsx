@@ -14,7 +14,7 @@ export const CreateCategory = () => {
   const submit = (data) => {
     mutate(data, {
       onSuccess: () => {
-        navigate(-1);
+        navigate("/");
         toast.success("category muvaffaqiyatli qo'shildi!");
       },
     });
