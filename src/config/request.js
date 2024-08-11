@@ -1,27 +1,25 @@
-import axios from "axios";
-import { loadState } from "./storage";
+import axios from 'axios';
+import { loadState } from './storage';
 
-const request = axios.create({ baseURL: "https://admin-panel-api-rose.vercel.app" });
+const request = axios.create({ baseURL: 'https://admin-panel-api-rose.vercel.app' });
 
 request.interceptors.request.use((config) => {
-  config.headers = {
-    ...config.headers,
-    Authorization: `Bearer ${loadState("user")?.token}`,
-  };
+  const token = loadState('user')?.token;
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
   return config;
 });
 
 request.interceptors.response.use(
-  (res) => {
-    return res;
-  },
+  (response) => response,
   (error) => {
-    if (error.response.status === 401) {
-      localStorage.removeItem("user");
-      window.location.href = "/login";
+    if (error.response && error.response.status === 401) {
+      // Token muddati tugagan yoki noto'g'ri bo'lsa, tokenni o'chirish
+      localStorage.removeItem('user');
+      window.location.href = '/login'; // Yo'naltirish
     }
-
-    return error;
+    return Promise.reject(error);
   }
 );
 
